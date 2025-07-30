@@ -1,9 +1,8 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Progress } from "@/components/ui/progress";
-import { Clock, BookOpen } from "lucide-react";
-import { Course } from "@/types/lesson";
+import React from 'react';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { Clock, BookOpen } from 'lucide-react-native';
+import { Course } from '@/types/lesson';
+import { colors, spacing, borderRadius, fontSize, fontWeight } from '@/styles';
 
 interface CourseCardProps {
   course: Course;
@@ -11,56 +10,164 @@ interface CourseCardProps {
   onStartCourse: (courseId: string) => void;
 }
 
-export const CourseCard = ({ course, progress = 0, onStartCourse }: CourseCardProps) => {
+export const CourseCard: React.FC<CourseCardProps> = ({ 
+  course, 
+  progress = 0, 
+  onStartCourse 
+}) => {
   return (
-    <Card className="group hover:shadow-hover hover:-translate-y-1 transition-all duration-500 bg-gradient-card border border-border/50 overflow-hidden backdrop-blur-sm">
-      <CardHeader className="pb-6 relative">
-        <div className="absolute inset-0 bg-gradient-content opacity-50 rounded-t-lg" />
-        <div className="relative">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="p-2 rounded-xl bg-primary/10 border border-primary/20">
-              <BookOpen className="h-5 w-5 text-primary" />
-            </div>
-            <Badge variant="secondary" className="text-xs font-semibold px-3 py-1 rounded-full">
-              {course.lessons.length} Lessons
-            </Badge>
-          </div>
-          <CardTitle className="text-2xl font-bold mb-3 leading-tight bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text">
-            {course.title}
-          </CardTitle>
-          <CardDescription className="text-muted-foreground text-base leading-relaxed">
-            {course.description}
-          </CardDescription>
-        </div>
-      </CardHeader>
+    <View style={styles.card}>
+      <View style={styles.header}>
+        <View style={styles.iconContainer}>
+          <BookOpen size={20} color={colors.primary} />
+        </View>
+        <View style={styles.badge}>
+          <Text style={styles.badgeText}>{course.lessons.length} Lessons</Text>
+        </View>
+      </View>
       
-      <CardContent className="pt-0 pb-6">
-        <div className="space-y-5">
-          <div className="flex items-center gap-3 p-3 rounded-lg bg-muted/50 border border-border/30">
-            <div className="p-1.5 rounded-lg bg-accent/10">
-              <Clock className="h-4 w-4 text-accent" />
-            </div>
-            <span className="text-sm font-medium text-foreground">{course.totalDuration} minutes total</span>
-          </div>
-          
-          {progress > 0 && (
-            <div className="space-y-3 p-4 rounded-lg bg-primary/5 border border-primary/10">
-              <div className="flex justify-between items-center">
-                <span className="text-sm font-medium text-muted-foreground">Progress</span>
-                <span className="text-sm font-bold text-primary">{progress}%</span>
-              </div>
-              <Progress value={progress} className="h-2.5" />
-            </div>
-          )}
-          
-          <Button 
-            onClick={() => onStartCourse(course.id)}
-            className="w-full h-12 bg-gradient-primary hover:shadow-lg hover:scale-105 transition-all duration-300 text-base font-semibold rounded-xl"
-          >
+      <Text style={styles.title}>{course.title}</Text>
+      <Text style={styles.description}>{course.description}</Text>
+      
+      <View style={styles.footer}>
+        <View style={styles.durationContainer}>
+          <Clock size={16} color={colors.textSecondary} />
+          <Text style={styles.durationText}>{course.totalDuration} minutes total</Text>
+        </View>
+        
+        {progress > 0 && (
+          <View style={styles.progressContainer}>
+            <View style={styles.progressHeader}>
+              <Text style={styles.progressLabel}>Progress</Text>
+              <Text style={styles.progressPercent}>{progress}%</Text>
+            </View>
+            <View style={styles.progressBar}>
+              <View style={[styles.progressFill, { width: `${progress}%` }]} />
+            </View>
+          </View>
+        )}
+        
+        <TouchableOpacity 
+          style={styles.button}
+          onPress={() => onStartCourse(course.id)}
+        >
+          <Text style={styles.buttonText}>
             {progress > 0 ? 'Continue Learning' : 'Start Course'}
-          </Button>
-        </div>
-      </CardContent>
-    </Card>
+          </Text>
+        </TouchableOpacity>
+      </View>
+    </View>
   );
 };
+
+const styles = StyleSheet.create({
+  card: {
+    backgroundColor: colors.white,
+    borderRadius: borderRadius.lg,
+    padding: spacing.lg,
+    marginBottom: spacing.md,
+    shadowColor: colors.black,
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
+    elevation: 4,
+  },
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: spacing.md,
+  },
+  iconContainer: {
+    width: 40,
+    height: 40,
+    borderRadius: borderRadius.md,
+    backgroundColor: colors.gray[100],
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  badge: {
+    backgroundColor: colors.gray[100],
+    paddingHorizontal: spacing.sm,
+    paddingVertical: spacing.xs,
+    borderRadius: borderRadius.full,
+  },
+  badgeText: {
+    fontSize: fontSize.xs,
+    fontWeight: fontWeight.semibold,
+    color: colors.textSecondary,
+  },
+  title: {
+    fontSize: fontSize['2xl'],
+    fontWeight: fontWeight.bold,
+    color: colors.text,
+    marginBottom: spacing.sm,
+  },
+  description: {
+    fontSize: fontSize.base,
+    color: colors.textSecondary,
+    lineHeight: 24,
+    marginBottom: spacing.lg,
+  },
+  footer: {
+    gap: spacing.md,
+  },
+  durationContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.sm,
+    backgroundColor: colors.gray[50],
+    padding: spacing.sm,
+    borderRadius: borderRadius.md,
+  },
+  durationText: {
+    fontSize: fontSize.sm,
+    fontWeight: fontWeight.medium,
+    color: colors.text,
+  },
+  progressContainer: {
+    backgroundColor: colors.gray[50],
+    padding: spacing.md,
+    borderRadius: borderRadius.md,
+  },
+  progressHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: spacing.sm,
+  },
+  progressLabel: {
+    fontSize: fontSize.sm,
+    fontWeight: fontWeight.medium,
+    color: colors.textSecondary,
+  },
+  progressPercent: {
+    fontSize: fontSize.sm,
+    fontWeight: fontWeight.bold,
+    color: colors.primary,
+  },
+  progressBar: {
+    height: 8,
+    backgroundColor: colors.gray[200],
+    borderRadius: borderRadius.sm,
+    overflow: 'hidden',
+  },
+  progressFill: {
+    height: '100%',
+    backgroundColor: colors.primary,
+  },
+  button: {
+    backgroundColor: colors.primary,
+    paddingVertical: spacing.md,
+    borderRadius: borderRadius.md,
+    alignItems: 'center',
+  },
+  buttonText: {
+    fontSize: fontSize.base,
+    fontWeight: fontWeight.semibold,
+    color: colors.white,
+  },
+});
