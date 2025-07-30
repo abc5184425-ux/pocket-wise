@@ -837,8 +837,7 @@ Always budget based on your lowest monthly income to handle variable earnings.
       }
     ]
   },
-    ]
-  },
+  
   {
     id: 'investing',
     title: 'Investment Fundamentals',
