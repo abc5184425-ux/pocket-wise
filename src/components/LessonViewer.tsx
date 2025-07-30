@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, ScrollView, StyleSheet } from 'react-native';
-import { ArrowLeft, Clock, CheckCircle, BookOpen, Target, Award } from 'lucide-react-native';
+import { ArrowLeft, Clock, CircleCheck as CheckCircle, BookOpen, Target, Award } from 'lucide-react-native';
 import Markdown from 'react-native-markdown-display';
 import { Lesson } from '@/types/lesson';
 
