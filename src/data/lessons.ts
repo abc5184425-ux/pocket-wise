@@ -4,225 +4,839 @@ export const courses: Course[] = [
   {
     id: 'budgeting',
     title: 'Budgeting Mastery',
-    description: 'Master the fundamentals of budgeting and take control of your finances',
+    description: 'Master budgeting fundamentals with Indian financial practices',
     color: 'primary',
     icon: 'Calculator',
-    totalDuration: 45,
+    totalDuration: 84,
     lessons: [
       {
-        id: 'budgeting-basics',
-        title: 'Budgeting Basics',
-        description: 'Learn the fundamental principles of budgeting',
+        id: 'what-is-budget',
+        title: 'What is a Budget?',
+        description: 'Understanding the basics of financial planning in India',
         category: 'budgeting',
-        duration: 15,
+        duration: 7,
         order: 1,
         content: `
-# Budgeting Basics
+# What is a Budget?
 
-## What is a Budget?
-A budget is a financial plan that helps you manage your income and expenses over a specific period, typically monthly.
+## Definition
+A budget is your monthly financial roadmap that helps you manage income and expenses effectively.
 
-## Why Budget?
-- **Control**: Know where your money goes
-- **Goals**: Save for important purchases
-- **Peace of Mind**: Reduce financial stress
-- **Emergency Preparedness**: Build emergency funds
+## Why Indians Need Budgeting
+- **Joint Family Expenses**: Manage shared household costs
+- **Festival Savings**: Plan for Diwali, weddings, and celebrations
+- **Education Costs**: Save for children's higher education
+- **Emergency Fund**: Build protection against job uncertainty
 
-## Key Components of a Budget
+## Cultural Context
+In Indian households, budgeting often involves:
+- **Family Contributions**: Multiple earning members
+- **Traditional Savings**: Gold, FDs, and PPF
+- **Religious Obligations**: Donations and charity
+- **Seasonal Expenses**: Festival shopping and travel
 
-### 1. Income
-- Salary/wages (after taxes)
-- Side hustles
-- Investment returns
-- Other regular income
+## The Indian Formula
+**Income - Expenses - Family Support = Personal Savings**
 
-### 2. Fixed Expenses
-- Rent/mortgage
-- Insurance premiums
-- Loan payments
-- Subscriptions
-
-### 3. Variable Expenses
-- Groceries
-- Utilities
-- Entertainment
-- Transportation
-
-### 4. Savings & Investments
-- Emergency fund
-- Retirement contributions
-- Goal-specific savings
-
-## The Golden Rule
-**Income - Expenses = Savings**
-
-Your goal is to ensure this equation always results in a positive number.
-
-## Next Steps
-Start tracking your income and expenses for one week to understand your current spending patterns.
+## Quick Start
+Track your spending for one week using a simple notebook or mobile app.
         `
       },
       {
-        id: 'budgeting-strategies',
-        title: 'Budgeting Strategies',
-        description: 'Explore different budgeting methods to find what works for you',
+        id: 'income-calculation',
+        title: 'Calculating Your Income',
+        description: 'Understanding your true take-home income in India',
         category: 'budgeting',
-        duration: 15,
+        duration: 6,
         order: 2,
         content: `
-# Budgeting Strategies
+# Calculating Your True Income
 
-## 1. The 50/30/20 Rule
-**Simple and effective for beginners**
+## Components of Indian Salary
+### In-Hand Salary
+- **Basic Salary**: 40-50% of CTC
+- **HRA**: House Rent Allowance (varies by city tier)
+- **Special Allowances**: Transport, medical, etc.
 
-- **50%** - Needs (rent, groceries, utilities)
-- **30%** - Wants (entertainment, dining out)
-- **20%** - Savings and debt payments
+### Deductions
+- **Provident Fund (PF)**: 12% of basic salary
+- **Professional Tax**: ₹200/month (varies by state)
+- **Income Tax (TDS)**: Based on tax slab
+- **ESI**: If salary < ₹21,000/month
 
-### Example (Monthly income: $4,000)
-- Needs: $2,000
-- Wants: $1,200
-- Savings: $800
+## Example Calculation
+**CTC**: ₹6,00,000/year
+- Basic: ₹2,40,000
+- HRA: ₹1,20,000  
+- Allowances: ₹2,40,000
+- **PF Deduction**: ₹28,800
+- **Tax**: ₹15,000
+- **Take-home**: ₹47,500/month
 
-## 2. Zero-Based Budgeting
-**Every dollar has a purpose**
+## Additional Income Sources
+- **Freelancing**: Growing gig economy
+- **Rental Income**: Property investments
+- **Interest**: FD, savings account
+- **Dividends**: Mutual funds, stocks
 
-Assign every dollar of income to specific categories until you reach zero.
+## Pro Tip
+Always budget based on your lowest monthly income to handle variable earnings.
+        `
+      },
+      {
+        id: 'fixed-expenses',
+        title: 'Fixed Expenses in India',
+        description: 'Managing recurring monthly expenses effectively',
+        category: 'budgeting',
+        duration: 6,
+        order: 3,
+        content: `
+# Fixed Expenses in India
 
-### Steps:
-1. List all income sources
-2. List all expenses and savings goals
-3. Assign dollars until income minus expenses equals zero
+## Housing Costs (25-30% of income)
+- **Rent**: Metro cities: ₹15,000-50,000+
+- **EMI**: Home loan payments
+- **Maintenance**: Society charges
+- **Property Tax**: Annual municipal tax
 
-## 3. Pay Yourself First
-**Prioritize savings**
+## Utilities & Services
+- **Electricity**: ₹1,500-4,000/month
+- **Water**: ₹300-800/month
+- **Gas**: ₹800-1,200/month
+- **Internet/DTH**: ₹1,000-2,000/month
 
-1. Immediately save your target percentage
-2. Live on what remains
-3. Automate savings transfers
+## Transportation
+- **Fuel**: ₹3,000-8,000/month
+- **Metro/Bus Pass**: ₹1,000-2,500/month
+- **Vehicle EMI**: ₹5,000-15,000/month
+- **Insurance**: Annual bike/car insurance
 
-## 4. Envelope Method
-**Cash-based spending control**
+## Family Obligations
+- **Parents' Support**: ₹5,000-20,000/month
+- **Children's School**: ₹3,000-25,000/month
+- **Domestic Help**: ₹2,000-8,000/month
+- **Health Insurance**: ₹8,000-20,000/year
 
-- Allocate cash to spending categories
-- When envelope is empty, stop spending in that category
-- Modern version: Use separate bank accounts
+## Government Contributions
+- **PF Contribution**: Employer + Employee
+- **Life Insurance**: LIC or term insurance
+- **Health Insurance**: Company + personal
 
-## 5. The 80/20 Budget
-**Simplified approach**
+## City-wise Average
+- **Tier 1 Cities**: ₹25,000-60,000/month
+- **Tier 2 Cities**: ₹15,000-35,000/month
+- **Tier 3 Cities**: ₹10,000-20,000/month
+        `
+      },
+      {
+        id: 'variable-expenses',
+        title: 'Variable Expenses Planning',
+        description: 'Controlling day-to-day spending in Indian lifestyle',
+        category: 'budgeting',
+        duration: 6,
+        order: 4,
+        content: `
+# Variable Expenses in India
 
-- **20%** - Savings and debt payments
-- **80%** - Everything else
+## Food & Groceries (15-20% of income)
+- **Groceries**: ₹3,000-8,000/month per family
+- **Vegetables/Fruits**: ₹1,500-3,000/month
+- **Dining Out**: ₹2,000-8,000/month
+- **Office Lunch**: ₹100-300/day
 
-## Choosing Your Strategy
-Consider your:
-- Financial goals
-- Income stability
-- Self-discipline level
-- Complexity preference
+## Shopping & Personal Care
+- **Clothing**: ₹2,000-10,000/month
+- **Personal Care**: ₹1,000-3,000/month
+- **Salon/Grooming**: ₹500-2,000/month
 
-**Pro Tip**: Start simple and evolve your approach as you develop better habits.
+## Entertainment & Lifestyle
+- **Movies/Shows**: ₹500-2,000/month
+- **Subscriptions**: Netflix, Prime, Spotify (₹1,000/month)
+- **Weekend Plans**: ₹2,000-8,000/month
+- **Gym/Sports**: ₹1,000-3,000/month
+
+## Indian-Specific Expenses
+- **Festival Shopping**: ₹5,000-25,000 (seasonal)
+- **Religious Donations**: ₹500-2,000/month
+- **Gift for Occasions**: ₹1,000-5,000/month
+- **Traditional Medicine**: Ayurveda, homeopathy
+
+## Emergency Categories
+- **Medical Expenses**: Sudden health issues
+- **Travel**: Family emergencies
+- **Repairs**: Home, vehicle, gadgets
+
+## Budgeting Tips
+- **Weekly Limits**: Set weekly spending targets
+- **Cash Envelope**: Use for discretionary spending
+- **UPI Tracking**: Monitor digital payments
+- **50% Rule**: Try to save 50% of variable budget
+        `
+      },
+      {
+        id: 'savings-goals',
+        title: 'Indian Savings Goals',
+        description: 'Traditional and modern savings approaches for Indians',
+        category: 'budgeting',
+        duration: 7,
+        order: 5,
+        content: `
+# Savings Goals for Indians
+
+## Emergency Fund (3-6 months expenses)
+**Priority #1 for every Indian family**
+- **Amount**: ₹1,50,000 - ₹6,00,000
+- **Where**: Savings account + FD
+- **Purpose**: Job loss, medical emergency, family crisis
+
+## Traditional Savings
+### Gold Investment
+- **Monthly**: ₹2,000-10,000 in gold ETF/physical
+- **Purpose**: Wedding, financial security
+- **Liquidity**: Easy to sell in India
+
+### Fixed Deposits
+- **Amount**: 20-30% of savings
+- **Rate**: 6-7% per annum
+- **Safety**: Principal protected
+
+## Life Goals Savings
+
+### Children's Education
+- **Engineering**: ₹15-25 lakhs
+- **Medical**: ₹50-75 lakhs
+- **Foreign Education**: ₹50 lakhs - 1 crore
+- **Start Early**: Mutual fund SIP
+
+### Marriage Expenses
+- **Average Wedding**: ₹10-30 lakhs
+- **Save Monthly**: ₹5,000-15,000
+- **Traditional Jewelry**: Significant portion
+
+### Home Purchase
+- **Down Payment**: 20% of property value
+- **Metro Cities**: ₹50 lakhs - 2 crores
+- **Tier 2 Cities**: ₹20-60 lakhs
+
+## Retirement Planning
+- **EPF**: Employer contribution (12% salary)
+- **PPF**: ₹1.5 lakh/year (15-year lock)
+- **NPS**: Additional retirement corpus
+- **Target**: 25-30x annual expenses
+
+## Indian Investment Mix
+- **Debt Instruments**: 40-50% (FD, PPF, bonds)
+- **Equity**: 30-40% (mutual funds, stocks)
+- **Real Estate**: 10-20%
+- **Gold**: 5-10%
+
+## Monthly Savings Allocation
+- **Emergency Fund**: Until completed
+- **PF/PPF**: ₹15,000-20,000
+- **Mutual Funds**: ₹5,000-25,000
+- **Insurance**: ₹2,000-5,000
+        `
+      },
+      {
+        id: 'budgeting-methods',
+        title: 'Indian Budgeting Methods',
+        description: 'Proven budgeting strategies adapted for Indian families',
+        category: 'budgeting',
+        duration: 8,
+        order: 6,
+        content: `
+# Indian Budgeting Methods
+
+## 1. The 50/30/20 Rule (Indian Version)
+**Modified for Indian lifestyle**
+
+### Monthly Income: ₹50,000
+- **50% (₹25,000)** - Needs
+  - Rent: ₹12,000
+  - Groceries: ₹5,000
+  - Utilities: ₹3,000
+  - Parents' support: ₹5,000
+
+- **30% (₹15,000)** - Wants
+  - Dining out: ₹4,000
+  - Entertainment: ₹3,000
+  - Shopping: ₹5,000
+  - Travel: ₹3,000
+
+- **20% (₹10,000)** - Savings
+  - PPF: ₹3,000
+  - Mutual Funds: ₹4,000
+  - Emergency fund: ₹3,000
+
+## 2. Joint Family Budget
+**Managing multiple earning members**
+
+### Income Pooling Method
+- **Primary Earner**: Handles fixed expenses
+- **Secondary Earner**: Variable expenses
+- **Joint Savings**: Common family goals
+
+### Responsibility Division
+- **Rent/EMI**: Primary earner
+- **Groceries/Utilities**: Secondary earner
+- **Children's Education**: Joint contribution
+- **Parents' Care**: Shared responsibility
+
+## 3. Festival Savings Method
+**Seasonal expense planning**
+
+### Monthly Allocation
+- **Diwali Fund**: ₹2,000/month
+- **Wedding Season**: ₹3,000/month
+- **Summer Vacation**: ₹2,000/month
+- **Annual Insurance**: ₹1,000/month
+
+## 4. Envelope System (Indian Style)
+**Cash-based control for Indian spending**
+
+### Physical Envelopes
+- **Weekly Groceries**: ₹1,500
+- **Transportation**: ₹800
+- **Entertainment**: ₹1,000
+- **Miscellaneous**: ₹500
+
+### Digital Envelopes
+- **Multiple Bank Accounts**: Different purposes
+- **Paytm Wallet**: Limited spending money
+- **UPI Spending Limit**: Daily/monthly caps
+
+## 5. Income-Based Scaling
+**Adjusting budget with Indian salary growth**
+
+### Salary Increase Strategy
+- **30%** - Increase lifestyle (housing, food)
+- **40%** - Boost savings and investments
+- **30%** - Family support and goals
+
+### Job Change Planning
+- **Notice Period**: 1-3 months planning
+- **Reduced Expense Mode**: Cut non-essentials
+- **Emergency Fund**: Bridge income gap
+        `
+      },
+      {
+        id: 'budgeting-tools',
+        title: 'Digital Budgeting Tools',
+        description: 'Indian apps and tools for effective budget tracking',
+        category: 'budgeting',
+        duration: 6,
+        order: 7,
+        content: `
+# Digital Budgeting Tools for Indians
+
+## Indian Budgeting Apps
+
+### Free Apps
+**Walnut (MoneyView)**
+- **Features**: Automatic expense tracking
+- **Bank Integration**: Links with major Indian banks
+- **SMS Reading**: Categorizes UPI/card transactions
+- **Goal Setting**: Savings targets
+
+**Money Manager**
+- **Manual Entry**: Simple expense logging
+- **Categories**: Indian-specific categories
+- **Reports**: Monthly spending analysis
+- **Offline**: Works without internet
+
+### Premium Apps
+**YNAB (You Need A Budget)**
+- **Zero-based budgeting**: Every rupee assigned
+- **Goal tracking**: Specific financial targets
+- **Cost**: $14/month (₹1,200/month)
+
+**Mint (by Intuit)**
+- **Comprehensive**: All accounts in one place
+- **Bill Reminders**: Never miss payments
+- **Investment Tracking**: Portfolio monitoring
+
+## Banking Tools
+
+### Bank Apps with Budgeting
+**HDFC Bank SmartBuy**
+- **Spend Analysis**: Category-wise breakdown
+- **Savings Goals**: Automated savings
+- **Investment Options**: Direct mutual fund access
+
+**ICICI iMobile Pay**
+- **Money Manager**: Expense categorization
+- **Goal-based Savings**: Specific targets
+- **Investment Dashboard**: All investments
+
+**Axis Mobile**
+- **Budget Planner**: Monthly budget setting
+- **Expense Analytics**: Detailed spending reports
+
+## UPI and Digital Payment Tracking
+
+### Google Pay
+- **Transaction History**: All UPI payments
+- **Merchant Categories**: Automatic categorization
+- **Monthly Reports**: Spending summaries
+
+### PhonePe
+- **Expense Tracking**: Built-in spend analysis
+- **Bill Payments**: Recurring payment tracking
+- **Investment Platform**: Mutual funds, gold
+
+### Paytm
+- **Wallet Budgeting**: Limited spending control
+- **Bill Organization**: All utility payments
+- **Cashback Tracking**: Rewards monitoring
+
+## Excel/Google Sheets Templates
+
+### Simple Monthly Budget
+- **Income tracking**: All sources
+- **Expense categories**: Indian lifestyle
+- **Savings calculation**: Automatic formulas
+
+### Family Budget Tracker
+- **Multiple members**: Individual tracking
+- **Shared expenses**: Joint family costs
+- **Goal progress**: Visual indicators
+
+## Pro Tips for Digital Budgeting
+- **Daily Review**: Check expenses every evening
+- **Weekly Summary**: Analyze spending patterns
+- **Monthly Planning**: Adjust next month's budget
+- **Annual Review**: Long-term financial health
+        `
+      },
+      {
+        id: 'common-mistakes',
+        title: 'Common Budgeting Mistakes',
+        description: 'Avoiding typical financial planning errors in India',
+        category: 'budgeting',
+        duration: 6,
+        order: 8,
+        content: `
+# Common Budgeting Mistakes in India
+
+## Lifestyle Inflation Mistakes
+### Salary Increase Trap
+- **Wrong**: Increase all expenses proportionally
+- **Right**: Maintain lifestyle, boost savings
+- **Indian Context**: Pressure to upgrade home/car immediately
+
+### Festival Overspending
+- **Common**: Borrowing for Diwali shopping
+- **Solution**: Year-round festival savings fund
+- **Amount**: 8-10% of annual income for festivals
+
+## Family Financial Errors
+
+### No Emergency Fund Priority
+- **Mistake**: Investing without emergency fund
+- **Risk**: Using credit cards for emergencies
+- **Solution**: 6 months expenses in liquid funds
+
+### Ignoring Health Insurance
+- **Cost**: Medical emergency can drain savings
+- **Solution**: Family floater health insurance
+- **Coverage**: ₹5-10 lakhs minimum
+
+### Over-supporting Extended Family
+- **Balance**: Help family within your means
+- **Risk**: Compromising your retirement planning
+- **Solution**: Set fixed monthly support amount
+
+## Investment Mistakes
+
+### Only Traditional Investments
+- **Problem**: FD and gold only (3-7% returns)
+- **Inflation Impact**: Losing purchasing power
+- **Solution**: Mix of equity and debt investments
+
+### No Goal-based Investing
+- **Wrong**: Random investments without purpose
+- **Right**: Specific goals with timelines
+- **Example**: Child education fund vs general savings
+
+## Budgeting Process Errors
+
+### Unrealistic Budget
+- **Problem**: Too strict budget leading to failure
+- **Solution**: 80% accuracy better than 100% failure
+- **Flexibility**: Allow 10-15% buffer
+
+### Not Tracking Small Expenses
+- **Impact**: ₹100 daily = ₹36,000 annually
+- **Examples**: Tea/coffee, auto rickshaw, street food
+- **Solution**: Weekly small expense limit
+
+### Forgetting Irregular Expenses
+- **Examples**: Vehicle insurance, medical checkups
+- **Impact**: Budget disruption every few months
+- **Solution**: Monthly sinking funds
+
+## Credit and Debt Mistakes
+
+### Credit Card Minimum Payment
+- **Interest**: 3% per month (36% annually)
+- **Solution**: Pay full amount always
+- **Emergency**: Use only for genuine emergencies
+
+### Multiple Personal Loans
+- **Trap**: Easy loan approval leading to over-borrowing
+- **Solution**: Single EMI shouldn't exceed 40% income
+- **Priority**: Clear highest interest debt first
+
+## Cultural Financial Mistakes
+
+### Gold as Only Investment
+- **Limit**: Keep gold to 5-10% of portfolio
+- **Reason**: No regular income generation
+- **Alternative**: Gold ETF for liquidity
+
+### Avoiding Equity Completely
+- **Fear**: Stock market volatility
+- **Reality**: Long-term wealth creation need equity
+- **Start**: Begin with mutual fund SIP (₹1,000/month)
+
+## Quick Fix Checklist
+- Emergency fund = 6 months expenses
+- Health insurance for whole family
+- Term life insurance = 10x annual income
+- Equity investment = Age appropriate allocation
+- Track every expense for first 3 months
         `
       },
       {
         id: 'advanced-budgeting',
-        title: 'Advanced Budgeting',
-        description: 'Advanced techniques for sophisticated financial planning',
+        title: 'Advanced Budgeting Techniques',
+        description: 'Sophisticated financial planning for wealth building',
         category: 'budgeting',
-        duration: 15,
-        order: 3,
+        duration: 8,
+        order: 9,
         content: `
 # Advanced Budgeting Techniques
 
-## 1. Sinking Funds
-**Save for irregular expenses**
+## Sinking Fund Strategy
+**Save for large irregular expenses**
 
-Create separate savings accounts for:
-- Annual insurance premiums
-- Car maintenance
-- Holiday gifts
-- Home repairs
-- Vacations
+### Indian Examples
+**Vehicle Expenses** (₹50,000 every 2 years)
+- Monthly saving: ₹2,100
+- Emergency repairs: ₹15,000 buffer
+- Insurance renewal: ₹10,000 annually
 
-### Example:
-If car maintenance costs $1,200/year, save $100/month in a car fund.
+**Festival and Celebrations** (₹1,00,000 annually)
+- Diwali shopping: ₹30,000
+- Family weddings: ₹40,000
+- Vacation travel: ₹30,000
+- Monthly fund: ₹8,500
 
-## 2. Calendar Budgeting
-**Align budget with paycheck timing**
+**Home Maintenance** (₹75,000 every 3 years)
+- Painting and repairs: ₹40,000
+- Appliance replacement: ₹25,000
+- Furniture upgrades: ₹10,000
+- Monthly saving: ₹2,100
 
-- Map out when bills are due
-- Align with pay periods
-- Smooth cash flow
+## Zero-Based Budgeting
+**Every rupee has a purpose**
 
-## 3. Value-Based Budgeting
-**Align spending with personal values**
+### Monthly Income: ₹80,000
+**Fixed Expenses: ₹40,000**
+- Home loan EMI: ₹25,000
+- Utilities: ₹5,000
+- Insurance premiums: ₹3,000
+- Parents' support: ₹7,000
 
-1. **Identify core values** (family, health, education)
-2. **Allocate more to value-aligned expenses**
-3. **Cut spending that doesn't support values**
+**Variable Expenses: ₹25,000**
+- Groceries: ₹8,000
+- Transportation: ₹5,000
+- Dining & entertainment: ₹7,000
+- Personal care: ₹3,000
+- Miscellaneous: ₹2,000
 
-## 4. Percentage-Based Adjustments
-**Scalable budgeting**
+**Savings & Goals: ₹15,000**
+- Emergency fund: ₹3,000
+- PPF: ₹3,000
+- Equity mutual funds: ₹5,000
+- Child education fund: ₹2,000
+- Vacation fund: ₹2,000
 
-As income changes, adjust percentages rather than fixed amounts:
-- Housing: 25-30%
-- Transportation: 10-15%
-- Food: 10-15%
-- Savings: 20%+
+**Remaining: ₹0**
 
-## 5. Multi-Timeframe Budgeting
+## Value-Based Budgeting
+**Align spending with life values**
 
-### Monthly Budget
-Standard monthly planning
+### Indian Family Values Example
+**Education (30% of savings)**
+- Children's tuition: ₹8,000/month
+- Skill development courses: ₹2,000/month
+- Books and learning materials: ₹1,000/month
 
-### Weekly Budget
-Detailed weekly spending plans
+**Family Welfare (25% of savings)**
+- Parents' healthcare: ₹3,000/month
+- Family insurance: ₹2,000/month
+- Regular family outings: ₹2,000/month
 
-### Annual Budget
-- Big picture planning
-- Seasonal expense planning
-- Goal setting
+**Financial Security (25% of savings)**
+- Emergency fund building: ₹4,000/month
+- Long-term investments: ₹3,000/month
 
-## 6. Scenario Planning
-**Prepare for income changes**
+**Personal Growth (20% of savings)**
+- Health and fitness: ₹2,000/month
+- Hobbies and skills: ₹1,500/month
+- Personal experiences: ₹1,500/month
 
-Create budgets for:
-- **Best case**: Income increase
-- **Current case**: Stable income
-- **Worst case**: Income reduction
+## Multi-Account System
+**Separate accounts for different purposes**
 
-## 7. Expense Prioritization Matrix
+### Account Structure
+**Primary Salary Account**
+- Monthly salary credit
+- All fixed expenses auto-debit
+- Immediate expense management
 
-### Essential & Urgent
-- Rent, utilities, minimum debt payments
+**Savings Account**
+- Emergency fund (₹5-10 lakhs)
+- High-yield savings (6-7% interest)
+- Instant liquidity access
 
-### Essential & Not Urgent
-- Emergency fund, retirement savings
+**Investment Account**
+- Mutual fund SIP auto-debit
+- Stock trading account linking
+- Goal-based investment tracking
 
-### Non-Essential & Urgent
-- Car repairs, medical expenses
+**Expense Account**
+- Monthly budget transfer
+- Variable expenses management
+- UPI payments and card usage
 
-### Non-Essential & Not Urgent
-- Entertainment, hobbies
+**Goal-Based Accounts**
+- Home purchase fund
+- Children's education corpus
+- Vacation and lifestyle fund
 
-## Advanced Tools
-- Spreadsheet automation
-- Budgeting apps with goal tracking
-- Cash flow forecasting
-- Debt optimization calculators
+## Percentage-Based Budget Scaling
 
-## Key Metrics to Track
-- **Savings Rate**: Savings ÷ Income
-- **Expense Ratios**: Category ÷ Total Expenses
-- **Emergency Fund Months**: Emergency Fund ÷ Monthly Expenses
-- **Debt-to-Income**: Total Debt Payments ÷ Income
+### Income Growth Strategy
+**Current Salary: ₹50,000 → New Salary: ₹70,000**
 
-## Continuous Improvement
-- Monthly budget reviews
-- Quarterly goal assessments
-- Annual strategy adjustments
+**Lifestyle Increase (40% of raise)**
+- Housing upgrade: +₹5,000
+- Food quality improvement: +₹2,000
+- Better transportation: +₹1,000
+
+**Savings Increase (50% of raise)**
+- Additional SIP: +₹5,000
+- Emergency fund boost: +₹3,000
+- New goal creation: +₹2,000
+
+**Family Support (10% of raise)**
+- Parents' increased support: +₹2,000
+
+## Seasonal Budget Adjustment
+
+### Festival Season (Oct-Nov)
+- Regular expenses: -20%
+- Festival fund activation: +₹15,000
+- Gift and celebration budget: Special allocation
+
+### Marriage Season (Nov-Feb)
+- Social expenses: +50%
+- Gift expenses: +₹8,000
+- Special savings for wedding gifts
+
+### Vacation Season (Apr-Jun)
+- Travel fund activation
+- Entertainment budget: +30%
+- Special experiences allocation
+
+## Advanced Tracking Metrics
+
+### Financial Health Ratios
+**Savings Rate**: 25-30% of income
+**Debt-to-Income**: <40% of income
+**Emergency Fund**: 6-12 months expenses
+**Investment Rate**: 15-20% of income
+
+### Monthly Reviews
+- Expense variance analysis
+- Goal achievement tracking
+- Budget adjustment needs
+- Next month planning
+
+**Annual Financial Health Check**
+- All goal progress review
+- Investment portfolio rebalancing
+- Insurance coverage adequacy
+- Tax planning optimization
+        `
+      },
+      {
+        id: 'tax-planning',
+        title: 'Budgeting for Tax Planning',
+        description: 'Integrating tax-saving investments in your budget',
+        category: 'budgeting',
+        duration: 7,
+        order: 10,
+        content: `
+# Budgeting for Tax Planning in India
+
+## Section 80C Investments (₹1.5 Lakh Limit)
+**Monthly Budget: ₹12,500**
+
+### Investment Options
+**EPF Contribution**: ₹3,000-5,000/month
+- Automatic salary deduction
+- 12% of basic salary
+- Safe long-term investment
+
+**PPF**: ₹3,000-12,500/month
+- 15-year lock-in period
+- 7-8% annual returns
+- Completely tax-free maturity
+
+**ELSS Mutual Funds**: ₹2,000-8,000/month
+- 3-year lock-in period
+- Market-linked returns (12-15% historical)
+- Best for young investors
+
+**Life Insurance Premium**: ₹1,000-3,000/month
+- Term insurance (₹1 crore coverage)
+- Avoid ULIPs for investment
+- Pure protection focus
+
+### Strategic Allocation
+**Conservative Investor** (Age 45+)
+- PPF: ₹8,000/month
+- EPF: ₹4,000/month
+- Term insurance: ₹500/month
+
+**Aggressive Investor** (Age 25-35)
+- ELSS: ₹6,000/month
+- EPF: ₹3,000/month
+- PPF: ₹3,000/month
+- Term insurance: ₹500/month
+
+## Additional Tax-Saving Investments
+
+### Section 80D (Health Insurance)
+**Family Health Insurance**: ₹25,000-50,000/year
+- Tax deduction up to ₹25,000
+- Parents' insurance: Additional ₹25,000
+- Senior citizen parents: ₹50,000
+
+**Monthly Budget**: ₹4,000-6,000
+
+### Section 24 (Home Loan Interest)
+**Home Loan Interest**: Up to ₹2 lakh/year
+- Self-occupied property deduction
+- Let-out property: No limit
+- Principal repayment: Covered under 80C
+
+## NPS (National Pension System)
+**Additional ₹50,000 Deduction (80CCD(1B))**
+- Monthly SIP: ₹4,200
+- Retirement wealth creation
+- Market-linked returns
+- Partial withdrawal after 60
+
+## Tax-Efficient Monthly Budget
+
+### Monthly Income: ₹1,00,000
+**Tax-Saving Investments: ₹20,800**
+- PPF: ₹8,000
+- ELSS: ₹5,000
+- NPS: ₹4,200
+- Health insurance: ₹2,500
+- Term insurance: ₹1,100
+
+**Take-home After Tax Savings**: ₹79,200
+**Regular Budget**: ₹59,200
+**Additional Savings**: ₹20,000
+
+### Tax Benefits
+**Without Tax Planning**: Tax = ₹23,000/month
+**With Tax Planning**: Tax = ₹15,000/month
+**Monthly Savings**: ₹8,000 (₹96,000/year)
+
+## Quarterly Tax Planning Review
+
+### April-June (New Financial Year)
+- Set tax-saving investment targets
+- Start monthly SIPs for ELSS
+- Review and increase health insurance
+
+### July-September
+- Mid-year tax calculation
+- Adjust investment amounts if needed
+- Plan for additional tax-saving instruments
+
+### October-December
+- Final quarter tax-saving push
+- Lump sum investments if required
+- Medical expense documentation
+
+### January-March (Tax Season)
+- Gather all investment proofs
+- File ITR accurately
+- Plan for next year's tax strategy
+
+## Common Tax Planning Mistakes
+
+### Last-Minute Rush
+**Problem**: Investing lump sum in March
+**Solution**: Monthly SIP throughout year
+**Benefit**: Better rupee cost averaging
+
+### Wrong Investment Choice
+**Problem**: Choosing high-commission products
+**Solution**: Direct mutual funds and low-cost options
+**Savings**: 1-2% annually in charges
+
+### Ignoring Other Sections
+**Problem**: Only focusing on 80C
+**Solution**: Utilize 80D, 80CCD, 24
+**Additional Savings**: ₹30,000-50,000 tax savings
+
+## Advanced Tax-Saving Strategies
+
+### Salary Structure Optimization
+**Work with HR to optimize allowances**
+- HRA optimization
+- Transport allowance
+- Meal coupons
+- Mobile and internet reimbursement
+
+### Investment Timing
+**SIP Date Alignment**
+- Align with salary credit date
+- Ensure sufficient balance
+- Automate all investments
+
+### Family Tax Planning
+**Joint Planning with Spouse**
+- Optimize deductions across both incomes
+- Joint health insurance benefits
+- Gift tax-free amount to spouse for additional investment
+
+**Tax Planning for Children**
+- Minor's income tax implications
+- Sukanya Samriddhi Yojana
+- Child education and health expenses
+
+## Year-End Tax Checklist
+- All 80C investments completed (₹1.5 lakh)
+- Health insurance premiums paid
+- NPS additional investment done
+- Home loan interest and principal documented
+- HRA and LTA claims submitted
+- Charitable donations receipts (80G)
+- Professional tax and other TDS certificates collected
         `
       }
+    ]
+  },
     ]
   },
   {
