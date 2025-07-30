@@ -1,8 +1,29 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { Clock, BookOpen } from 'lucide-react-native';
+import { Clock, BookOpen, Star, TrendingUp } from 'lucide-react-native';
 import { Course } from '@/types/lesson';
-import { colors, spacing, borderRadius, fontSize, fontWeight } from '@/styles';
+
+const colors = {
+  primary: '#3B82F6',
+  primaryLight: '#60A5FA',
+  secondary: '#10B981',
+  accent: '#8B5CF6',
+  background: '#FFFFFF',
+  text: '#1F2937',
+  textSecondary: '#6B7280',
+  border: '#E5E7EB',
+  success: '#10B981',
+  white: '#FFFFFF',
+  black: '#000000',
+  gray: {
+    50: '#F9FAFB',
+    100: '#F3F4F6',
+    200: '#E5E7EB',
+    300: '#D1D5DB',
+    400: '#9CA3AF',
+    500: '#6B7280',
+  }
+};
 
 interface CourseCardProps {
   course: Course;
@@ -15,14 +36,30 @@ export const CourseCard: React.FC<CourseCardProps> = ({
   progress = 0, 
   onStartCourse 
 }) => {
+  const getIconComponent = () => {
+    switch (course.icon) {
+      case 'trending-up':
+        return <TrendingUp size={24} color={course.color} />;
+      case 'star':
+        return <Star size={24} color={course.color} />;
+      default:
+        return <BookOpen size={24} color={course.color} />;
+    }
+  };
+
   return (
-    <View style={styles.card}>
+    <View style={[styles.card, { borderLeftColor: course.color }]}>
       <View style={styles.header}>
-        <View style={styles.iconContainer}>
-          <BookOpen size={20} color={colors.primary} />
+        <View style={[styles.iconContainer, { backgroundColor: course.color + '15' }]}>
+          {getIconComponent()}
         </View>
-        <View style={styles.badge}>
-          <Text style={styles.badgeText}>{course.lessons.length} Lessons</Text>
+        <View style={styles.headerRight}>
+          <View style={styles.badge}>
+            <Text style={styles.badgeText}>{course.lessons.length} Lessons</Text>
+          </View>
+          <View style={styles.difficultyBadge}>
+            <Text style={styles.difficultyText}>{course.difficulty}</Text>
+          </View>
         </View>
       </View>
       
@@ -30,25 +67,34 @@ export const CourseCard: React.FC<CourseCardProps> = ({
       <Text style={styles.description}>{course.description}</Text>
       
       <View style={styles.footer}>
-        <View style={styles.durationContainer}>
-          <Clock size={16} color={colors.textSecondary} />
-          <Text style={styles.durationText}>{course.totalDuration} minutes total</Text>
+        <View style={styles.metaContainer}>
+          <View style={styles.durationContainer}>
+            <Clock size={16} color={colors.textSecondary} />
+            <Text style={styles.durationText}>{course.totalDuration} min total</Text>
+          </View>
+          
+          {course.rating && (
+            <View style={styles.ratingContainer}>
+              <Star size={16} color={colors.accent} />
+              <Text style={styles.ratingText}>{course.rating}</Text>
+            </View>
+          )}
         </View>
         
         {progress > 0 && (
           <View style={styles.progressContainer}>
             <View style={styles.progressHeader}>
               <Text style={styles.progressLabel}>Progress</Text>
-              <Text style={styles.progressPercent}>{progress}%</Text>
+              <Text style={styles.progressPercent}>{Math.round(progress)}%</Text>
             </View>
             <View style={styles.progressBar}>
-              <View style={[styles.progressFill, { width: `${progress}%` }]} />
+              <View style={[styles.progressFill, { width: `${progress}%`, backgroundColor: course.color }]} />
             </View>
           </View>
         )}
         
         <TouchableOpacity 
-          style={styles.button}
+          style={[styles.button, { backgroundColor: course.color }]}
           onPress={() => onStartCourse(course.id)}
         >
           <Text style={styles.buttonText}>
@@ -63,111 +109,145 @@ export const CourseCard: React.FC<CourseCardProps> = ({
 const styles = StyleSheet.create({
   card: {
     backgroundColor: colors.white,
-    borderRadius: borderRadius.lg,
-    padding: spacing.lg,
-    marginBottom: spacing.md,
+    borderRadius: 16,
+    padding: 20,
+    marginBottom: 16,
     shadowColor: colors.black,
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
+    shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.1,
-    shadowRadius: 8,
-    elevation: 4,
+    shadowRadius: 12,
+    elevation: 6,
+    borderLeftWidth: 4,
   },
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: spacing.md,
+    alignItems: 'flex-start',
+    marginBottom: 16,
   },
   iconContainer: {
-    width: 40,
-    height: 40,
-    borderRadius: borderRadius.md,
-    backgroundColor: colors.gray[100],
+    width: 48,
+    height: 48,
+    borderRadius: 12,
     justifyContent: 'center',
     alignItems: 'center',
   },
+  headerRight: {
+    alignItems: 'flex-end',
+    gap: 8,
+  },
   badge: {
     backgroundColor: colors.gray[100],
-    paddingHorizontal: spacing.sm,
-    paddingVertical: spacing.xs,
-    borderRadius: borderRadius.full,
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 20,
   },
   badgeText: {
-    fontSize: fontSize.xs,
-    fontWeight: fontWeight.semibold,
+    fontSize: 12,
+    fontWeight: '600',
     color: colors.textSecondary,
+  },
+  difficultyBadge: {
+    backgroundColor: colors.primary + '15',
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+    borderRadius: 12,
+  },
+  difficultyText: {
+    fontSize: 11,
+    fontWeight: '600',
+    color: colors.primary,
+    textTransform: 'uppercase',
   },
   title: {
-    fontSize: fontSize['2xl'],
-    fontWeight: fontWeight.bold,
+    fontSize: 22,
+    fontWeight: '700',
     color: colors.text,
-    marginBottom: spacing.sm,
+    marginBottom: 8,
+    lineHeight: 28,
   },
   description: {
-    fontSize: fontSize.base,
+    fontSize: 15,
     color: colors.textSecondary,
-    lineHeight: 24,
-    marginBottom: spacing.lg,
+    lineHeight: 22,
+    marginBottom: 20,
   },
   footer: {
-    gap: spacing.md,
+    gap: 16,
+  },
+  metaContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
   durationContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: spacing.sm,
+    gap: 6,
     backgroundColor: colors.gray[50],
-    padding: spacing.sm,
-    borderRadius: borderRadius.md,
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+    borderRadius: 20,
   },
   durationText: {
-    fontSize: fontSize.sm,
-    fontWeight: fontWeight.medium,
+    fontSize: 13,
+    fontWeight: '600',
+    color: colors.text,
+  },
+  ratingContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+  },
+  ratingText: {
+    fontSize: 14,
+    fontWeight: '600',
     color: colors.text,
   },
   progressContainer: {
     backgroundColor: colors.gray[50],
-    padding: spacing.md,
-    borderRadius: borderRadius.md,
+    padding: 16,
+    borderRadius: 12,
   },
   progressHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: spacing.sm,
+    marginBottom: 8,
   },
   progressLabel: {
-    fontSize: fontSize.sm,
-    fontWeight: fontWeight.medium,
+    fontSize: 14,
+    fontWeight: '600',
     color: colors.textSecondary,
   },
   progressPercent: {
-    fontSize: fontSize.sm,
-    fontWeight: fontWeight.bold,
+    fontSize: 14,
+    fontWeight: '700',
     color: colors.primary,
   },
   progressBar: {
     height: 8,
     backgroundColor: colors.gray[200],
-    borderRadius: borderRadius.sm,
+    borderRadius: 4,
     overflow: 'hidden',
   },
   progressFill: {
     height: '100%',
-    backgroundColor: colors.primary,
+    borderRadius: 4,
   },
   button: {
-    backgroundColor: colors.primary,
-    paddingVertical: spacing.md,
-    borderRadius: borderRadius.md,
+    paddingVertical: 16,
+    borderRadius: 12,
     alignItems: 'center',
+    shadowColor: colors.black,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 2,
   },
   buttonText: {
-    fontSize: fontSize.base,
-    fontWeight: fontWeight.semibold,
+    fontSize: 16,
+    fontWeight: '600',
     color: colors.white,
   },
 });

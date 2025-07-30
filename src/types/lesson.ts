@@ -7,6 +7,7 @@ export interface Lesson {
   duration: number; // in minutes
   order: number;
   completed?: boolean;
+  keyTakeaways?: string[];
 }
 
 export interface Course {
@@ -16,6 +17,8 @@ export interface Course {
   lessons: Lesson[];
   color: string;
   icon: string;
+  difficulty: 'Beginner' | 'Intermediate' | 'Advanced';
+  rating?: number;
   totalDuration: number;
 }
 
