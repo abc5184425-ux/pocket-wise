@@ -22,8 +22,6 @@ const colors = {
     100: '#F3F4F6',
     200: '#E5E7EB',
     300: '#D1D5DB',
-    case 'target':
-      return <Target size={24} color={course.color} />;
     400: '#9CA3AF',
     500: '#6B7280',
   }
@@ -46,6 +44,8 @@ export const CourseCard: React.FC<CourseCardProps> = ({
         return <TrendingUp size={24} color={course.color} />;
       case 'star':
         return <Star size={24} color={course.color} />;
+      case 'target':
+        return <Target size={24} color={course.color} />;
       default:
         return <BookOpen size={24} color={course.color} />;
     }
