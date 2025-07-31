@@ -1,7 +1,9 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Dimensions } from 'react-native';
 import { Clock, BookOpen, Star, TrendingUp } from 'lucide-react-native';
 import { Course } from '@/types/lesson';
+
+const { width } = Dimensions.get('window');
 
 const colors = {
   primary: '#3B82F6',
@@ -48,7 +50,11 @@ export const CourseCard: React.FC<CourseCardProps> = ({
   };
 
   return (
-    <View style={[styles.card, { borderLeftColor: course.color }]}>
+    <TouchableOpacity 
+      style={[styles.card, { borderLeftColor: course.color }]}
+      onPress={() => onStartCourse(course.id)}
+      activeOpacity={0.95}
+    >
       <View style={styles.header}>
         <View style={[styles.iconContainer, { backgroundColor: course.color + '15' }]}>
           {getIconComponent()}
@@ -93,16 +99,14 @@ export const CourseCard: React.FC<CourseCardProps> = ({
           </View>
         )}
         
-        <TouchableOpacity 
-          style={[styles.button, { backgroundColor: course.color }]}
-          onPress={() => onStartCourse(course.id)}
-        >
+        <View style={[styles.button, { backgroundColor: course.color }]}>
+          <BookOpen size={18} color={colors.white} />
           <Text style={styles.buttonText}>
             {progress > 0 ? 'Continue Learning' : 'Start Course'}
           </Text>
-        </TouchableOpacity>
+        </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
@@ -113,11 +117,12 @@ const styles = StyleSheet.create({
     padding: 20,
     marginBottom: 16,
     shadowColor: colors.black,
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.1,
-    shadowRadius: 12,
-    elevation: 6,
+    shadowOffset: { width: 0, height: 6 },
+    shadowOpacity: 0.12,
+    shadowRadius: 16,
+    elevation: 8,
     borderLeftWidth: 4,
+    transform: [{ scale: 1 }],
   },
   header: {
     flexDirection: 'row',
@@ -236,9 +241,12 @@ const styles = StyleSheet.create({
     borderRadius: 4,
   },
   button: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+    justifyContent: 'center',
     paddingVertical: 16,
     borderRadius: 12,
-    alignItems: 'center',
     shadowColor: colors.black,
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,

@@ -1,8 +1,10 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, ScrollView, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, ScrollView, StyleSheet, Image, Dimensions } from 'react-native';
 import { ArrowLeft, Clock, CircleCheck as CheckCircle, BookOpen, Target, Award } from 'lucide-react-native';
 import Markdown from 'react-native-markdown-display';
 import { Lesson } from '@/types/lesson';
+
+const { width } = Dimensions.get('window');
 
 const colors = {
   primary: '#3B82F6',
@@ -165,9 +167,30 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
 
       {/* Content */}
       <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
+        {/* Hero Image */}
+        {lesson.imageUrl && (
+          <View style={styles.imageContainer}>
+            <Image 
+              source={{ uri: lesson.imageUrl }} 
+              style={styles.heroImage}
+              resizeMode="cover"
+            />
+            <View style={styles.imageOverlay}>
+              <View style={styles.imageContent}>
+                <Text style={styles.imageTitle}>{lesson.title}</Text>
+                <Text style={styles.imageDescription}>{lesson.description}</Text>
+              </View>
+            </View>
+          </View>
+        )}
+        
         <View style={styles.titleContainer}>
-          <Text style={styles.title}>{lesson.title}</Text>
-          <Text style={styles.description}>{lesson.description}</Text>
+          {!lesson.imageUrl && (
+            <>
+              <Text style={styles.title}>{lesson.title}</Text>
+              <Text style={styles.description}>{lesson.description}</Text>
+            </>
+          )}
         </View>
         
         <View style={styles.markdownContainer}>
@@ -178,14 +201,21 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
 
         {/* Key Takeaways */}
         {lesson.keyTakeaways && (
-          <View style={styles.takeawaysContainer}>
-            <Text style={styles.takeawaysTitle}>Key Takeaways</Text>
-            {lesson.keyTakeaways.map((takeaway, index) => (
-              <View key={index} style={styles.takeawayItem}>
-                <View style={styles.takeawayBullet} />
-                <Text style={styles.takeawayText}>{takeaway}</Text>
+          <View style={styles.takeawaysWrapper}>
+            <View style={styles.takeawaysContainer}>
+              <View style={styles.takeawaysHeader}>
+                <Award size={24} color={colors.primary} />
+                <Text style={styles.takeawaysTitle}>Key Takeaways</Text>
               </View>
-            ))}
+              {lesson.keyTakeaways.map((takeaway, index) => (
+                <View key={index} style={styles.takeawayItem}>
+                  <View style={styles.takeawayNumber}>
+                    <Text style={styles.takeawayNumberText}>{index + 1}</Text>
+                  </View>
+                  <Text style={styles.takeawayText}>{takeaway}</Text>
+                </View>
+              ))}
+            </View>
           </View>
         )}
       </ScrollView>
@@ -317,6 +347,46 @@ const styles = StyleSheet.create({
   content: {
     flex: 1,
   },
+  imageContainer: {
+    position: 'relative',
+    height: 280,
+    marginBottom: 0,
+  },
+  heroImage: {
+    width: '100%',
+    height: '100%',
+  },
+  imageOverlay: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    background: 'linear-gradient(transparent, rgba(0,0,0,0.7))',
+    backgroundColor: 'rgba(0,0,0,0.4)',
+    padding: 24,
+  },
+  imageContent: {
+    marginTop: 40,
+  },
+  imageTitle: {
+    fontSize: 28,
+    fontWeight: '700',
+    color: colors.white,
+    marginBottom: 8,
+    lineHeight: 34,
+    textShadowColor: 'rgba(0,0,0,0.5)',
+    textShadowOffset: { width: 0, height: 1 },
+    textShadowRadius: 3,
+  },
+  imageDescription: {
+    fontSize: 16,
+    color: colors.white,
+    lineHeight: 22,
+    opacity: 0.95,
+    textShadowColor: 'rgba(0,0,0,0.5)',
+    textShadowOffset: { width: 0, height: 1 },
+    textShadowRadius: 3,
+  },
   titleContainer: {
     padding: 20,
     backgroundColor: colors.white,
@@ -338,38 +408,61 @@ const styles = StyleSheet.create({
     padding: 20,
     marginTop: 8,
   },
-  takeawaysContainer: {
-    backgroundColor: colors.gray[50],
+  takeawaysWrapper: {
     margin: 20,
+  },
+  takeawaysContainer: {
+    backgroundColor: colors.white,
     padding: 20,
-    borderRadius: 12,
-    borderLeftWidth: 4,
-    borderLeftColor: colors.primary,
+    borderRadius: 16,
+    shadowColor: colors.black,
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.1,
+    shadowRadius: 12,
+    elevation: 6,
+    borderWidth: 1,
+    borderColor: colors.primary + '20',
+  },
+  takeawaysHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 12,
+    marginBottom: 20,
+    paddingBottom: 16,
+    borderBottomWidth: 1,
+    borderBottomColor: colors.border,
   },
   takeawaysTitle: {
-    fontSize: 18,
+    fontSize: 20,
     fontWeight: '700',
     color: colors.text,
-    marginBottom: 16,
   },
   takeawayItem: {
     flexDirection: 'row',
     alignItems: 'flex-start',
-    marginBottom: 12,
+    marginBottom: 16,
+    gap: 16,
   },
-  takeawayBullet: {
-    width: 6,
-    height: 6,
-    borderRadius: 3,
+  takeawayNumber: {
+    width: 28,
+    height: 28,
+    borderRadius: 14,
     backgroundColor: colors.primary,
-    marginTop: 8,
-    marginRight: 12,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 2,
+  },
+  takeawayNumberText: {
+    fontSize: 14,
+    fontWeight: '700',
+    color: colors.white,
   },
   takeawayText: {
     flex: 1,
-    fontSize: 15,
+    fontSize: 16,
     color: colors.text,
-    lineHeight: 22,
+    lineHeight: 24,
+    fontWeight: '500',
   },
   actionContainer: {
     padding: 20,

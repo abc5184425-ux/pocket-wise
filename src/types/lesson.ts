@@ -8,6 +8,7 @@ export interface Lesson {
   order: number;
   completed?: boolean;
   keyTakeaways?: string[];
+  imageUrl?: string;
 }
 
 export interface Course {

@@ -101,7 +101,9 @@ export default function Index() {
       <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
         {/* Hero Section */}
         <View style={styles.heroSection}>
-          <View style={styles.heroBackground} />
+          <View style={styles.heroBackground}>
+            <View style={styles.heroPattern} />
+          </View>
           <View style={styles.heroContent}>
             <View style={styles.heroHeader}>
               <View style={styles.heroIcon}>
@@ -246,8 +248,16 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     bottom: 0,
-    backgroundColor: colors.primaryDark,
-    opacity: 0.1,
+    backgroundColor: colors.primary,
+  },
+  heroPattern: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: 'rgba(59, 130, 246, 0.1)',
+    opacity: 0.8,
   },
   heroContent: {
     alignItems: 'center',
@@ -420,7 +430,7 @@ const styles = StyleSheet.create({
   featuresSection: {
     paddingVertical: 48,
     paddingHorizontal: 24,
-    backgroundColor: colors.backgroundSecondary,
+    backgroundColor: colors.gray[50],
   },
   featuresTitle: {
     fontSize: 28,
@@ -438,14 +448,16 @@ const styles = StyleSheet.create({
   featureCard: {
     width: (width - 64) / 2,
     backgroundColor: colors.white,
-    padding: 20,
+    padding: 24,
     borderRadius: 16,
     alignItems: 'center',
     shadowColor: colors.black,
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 8,
-    elevation: 4,
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.12,
+    shadowRadius: 12,
+    elevation: 6,
+    borderWidth: 1,
+    borderColor: colors.border,
   },
   featureCardTitle: {
     fontSize: 16,
