@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Dimensions } from 'react-native';
-import { Clock, BookOpen, Star, TrendingUp } from 'lucide-react-native';
+import { Clock, BookOpen, Star, TrendingUp, Target } from 'lucide-react-native';
 import { Course } from '@/types/lesson';
 
 const { width } = Dimensions.get('window');
@@ -22,6 +22,8 @@ const colors = {
     100: '#F3F4F6',
     200: '#E5E7EB',
     300: '#D1D5DB',
+    case 'target':
+      return <Target size={24} color={course.color} />;
     400: '#9CA3AF',
     500: '#6B7280',
   }
